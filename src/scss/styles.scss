@@ -1,0 +1,12 @@
+@import 'partials/variables';
+
+@import "~bootstrap/scss/bootstrap";
+
+@import "partials/typography";
+@import "partials/helpers";
+@import "partials/navbar";
+@import "partials/cards";
+@import "partials/blocks";
+
+// module support
+@import "modules/module_item_carousel_block";

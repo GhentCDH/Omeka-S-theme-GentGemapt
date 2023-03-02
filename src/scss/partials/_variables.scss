@@ -1,0 +1,57 @@
+
+// colors
+
+$background-color: white;
+$font-color: #333333;
+
+$primary: #610345;
+$secondary: #ed474a;
+$tertiary: #909090;
+$black: #323232;
+$white: #fff;
+
+$light: #e6e6e6;
+
+$dark: $primary;
+
+$light-gray: #aaa;
+
+$color-blue: #0080b6;
+
+// fonts
+
+$font-family-sans-serif: 'Graphik', sans-serif;
+$font-family-serif: 'BrightonBold', serif;
+
+$font-family: $font-family-sans-serif;
+
+$font-size: 1rem;
+$font-size-smaller: 0.9rem;
+$font-size-small: 0.8rem;
+
+// headings
+
+//$headings-font-family: $font-family-serif;
+//$headings-color: $primary;
+
+
+// custom checkbox control
+
+$custom-control-indicator-size: 1.3rem;
+$custom-control-indicator-bg: $light;
+$custom-control-indicator-active-bg: $light;
+$custom-control-indicator-border-width: 4px;
+$custom-control-indicator-border-color: $light;
+$custom-control-indicator-focus-border-color: $light;
+$custom-control-indicator-focus-box-shadow: none;
+$custom-control-indicator-checked-bg: $secondary;
+$custom-control-indicator-checked-border-color: $light;
+
+$custom-checkbox-indicator-border-radius: 50%;
+$custom-checkbox-indicator-icon-checked: none;
+
+// navbar
+
+$navbar-dark-color: $white;
+$navbar-dark-active-color: $secondary;
+$nav-link-font-weight: 500;

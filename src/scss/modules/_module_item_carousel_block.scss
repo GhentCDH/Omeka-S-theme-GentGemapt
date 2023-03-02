@@ -1,0 +1,49 @@
+.blocks .block--carousel:first-child {
+    margin-top: 0;
+}
+
+.carousel-block {
+
+    margin: 0;
+
+    .slick-slider {
+
+    }
+
+    .slick-list {
+
+    }
+
+    .slick-track {
+        height: 250px;
+       
+        @include media-breakpoint-up(sm) {
+            height: 400px;
+        }        
+    }
+
+    .slick-slide {
+        border: 0;
+        padding: 0;
+        outline: 0;
+    }
+
+    .slide-text {
+        color: $white;
+    }
+
+    .carousel-caption {
+        position: absolute;
+        top: 5rem;
+        left: 0;
+        right: 0;
+        padding: 0 15%;
+
+        font-weight: 500;
+        h1 {
+            color: white;
+        }
+    }
+
+}
+

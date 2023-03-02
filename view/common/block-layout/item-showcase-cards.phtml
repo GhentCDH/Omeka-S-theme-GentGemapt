@@ -1,0 +1,56 @@
+<?php
+use Omeka\Api\Representation\ItemRepresentation;
+use Omeka\Api\Representation\SiteBlockAttachmentRepresentation;
+
+/** @var SiteBlockAttachmentRepresentation $attachments */
+
+$showTitleOption = $this->showTitleOption;
+
+$classCards = $classCards ?? "cards card-group";
+$classCard = $classCard ?? "card";
+$classBtn = $classBtn ?? "btn btn-secondary";
+$useResourceLink = $useResourceLink ?? false;
+?>
+
+
+<div class="<?= $classCards ?>">
+<?php foreach ($attachments as $attachment):
+    /** @var ItemRepresentation $item */
+    $item = $attachment->item();
+    $itemValues = $item->values();
+    if ($item):
+        ?>
+        <div class="<?= $classCard ?>">
+            <div class="card-image">
+                <?php
+                $media = $attachment->media() ?: $item->primaryMedia();
+                if ($media) {
+                    if ( $useResourceLink ) {
+                        echo $item->linkRaw($this->thumbnail($media, $this->thumbnailType));
+                    } else {
+                        echo $this->thumbnail($media, $this->thumbnailType);
+                    }
+                }
+                ?>
+            </div>
+            <div class="card-body">
+                <?php if ( $showTitleOption !== 'no_title'): ?>
+                <h5 class="card-title">
+                    <?= $showTitleOption == 'item_title' ? $item->displayTitle() : $media->displayTitle() ?>
+                </h5>
+                <?php endif; ?>
+                <?php if ( $description = $item->value('dcterms:description')?->value() ): ?>
+                <div class="card-text">
+                    <?= $description ?>
+                </div>
+                <?php endif; ?>
+                <?php if ( $link = $item->value('dcterms:references') ): ?>
+                <div class="card-button">
+                    <a href="<?= $link->uri() ?>" class="<?= $classBtn ?>"><?= $link->value() ?></a>
+                </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    <?php endif; ?>
+<?php endforeach; ?>
+</div>

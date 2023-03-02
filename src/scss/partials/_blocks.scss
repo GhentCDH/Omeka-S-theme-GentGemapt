@@ -1,0 +1,31 @@
+
+.blocks {
+
+    .block--pageTitle {
+        padding: 0;
+    }
+
+    & > .block {
+        padding: 1.5rem 0;
+
+        @include media-breakpoint-up(md) {
+            padding: 3rem 0;
+        }
+
+        &.section--light {
+            background-color: rgba($color-blue, 0.1);
+        }
+
+        &:first-child {
+            margin-top: 80px;
+            padding-top: 0 !important;
+        }
+    }
+
+    .block--default + .block--default {
+        padding-top: 0 !important;
+    }
+
+
+}
+

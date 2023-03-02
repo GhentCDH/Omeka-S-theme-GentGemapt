@@ -1,0 +1,35 @@
+.navbar {
+  z-index: 1005;
+  padding: 0;
+  min-height: 60px;
+
+  .navbar-collapse {
+    padding: 0 16px;
+  }
+
+  .navbar-brand {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 90px;
+    padding: 7px 40px;
+    z-index: 1006;
+
+    background-color: #610345 !important;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .nav-item {
+    img {
+      height: 32px;
+      filter: invert(100%);
+    }
+  }
+}
+

@@ -1,0 +1,41 @@
+{
+  "fonts/BrightonStd-Bold.otf": {
+    "file": "BrightonStd-Bold.otf",
+    "src": "fonts/BrightonStd-Bold.otf"
+  },
+  "fonts/Graphik-Medium-Web.woff": {
+    "file": "Graphik-Medium-Web.woff",
+    "src": "fonts/Graphik-Medium-Web.woff"
+  },
+  "fonts/Graphik-Medium-Web.woff2": {
+    "file": "Graphik-Medium-Web.woff2",
+    "src": "fonts/Graphik-Medium-Web.woff2"
+  },
+  "fonts/Graphik-Regular-Web.woff": {
+    "file": "Graphik-Regular-Web.woff",
+    "src": "fonts/Graphik-Regular-Web.woff"
+  },
+  "fonts/Graphik-Regular-Web.woff2": {
+    "file": "Graphik-Regular-Web.woff2",
+    "src": "fonts/Graphik-Regular-Web.woff2"
+  },
+  "index.css": {
+    "file": "index.css",
+    "src": "index.css"
+  },
+  "index.html": {
+    "assets": [
+      "BrightonStd-Bold.otf",
+      "Graphik-Medium-Web.woff2",
+      "Graphik-Medium-Web.woff",
+      "Graphik-Regular-Web.woff2",
+      "Graphik-Regular-Web.woff"
+    ],
+    "css": [
+      "index.css"
+    ],
+    "file": "index.js",
+    "isEntry": true,
+    "src": "index.html"
+  }
+}

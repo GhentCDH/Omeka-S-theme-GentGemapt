@@ -1,0 +1,90 @@
+<?php
+$boolIsProduction = $_SERVER['APPLICATION_ENV'] !== 'development';
+
+$escape = $this->plugin('escapeHtml');
+$userBar = $this->userBar();
+
+$this->htmlElement('html')->setAttribute('lang', $this->lang());
+$this->headMeta()->setCharset('utf-8');
+$this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1');
+$this->headTitle($this->setting('installation_title', 'Omeka S'))->setSeparator(' · ');
+// css
+if ( $boolIsProduction ) {
+    $this->headLink()->appendStylesheet($this->assetUrl('build/index.css'));
+}
+// js
+$this->headScript()->prependFile($this->assetUrl('js/global.js', 'Omeka'));
+$this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
+
+if ( $boolIsProduction ) {
+    $this->headScript()->appendFile($this->assetUrl('build/index.js'), 'text/javascript', ['defer' => true]);
+} else {
+    $this->headScript()->prependFile('http://localhost:5173/@vite/client', 'text/javascript', ['type' => 'module']);
+    $this->headScript()->prependFile('http://localhost:5173/js/main.js', 'text/javascript', ['type' => 'module']);   
+}
+$this->headScript()->setAllowArbitraryAttributes(true);
+$this->trigger('view.layout');
+
+
+// split menu container in left and right container
+$navigationLeft = new Laminas\Navigation\Navigation();
+$navigationRight = new Laminas\Navigation\Navigation();
+$navigationPages = $site->publicNav()->menu()->getContainer()->getPages();
+
+$countPages = count($navigationPages);
+
+$i = 0;
+foreach($navigationPages as $item ) {
+    $i++;
+    $item->setClass('nav-link');
+    if ( $i > floor($countPages/2) ) {
+        $navigationRight->addPage($item);
+    } else {
+        $navigationLeft->addPage($item);
+    }
+}
+?>
+
+
+<?php echo $this->doctype(); ?>
+<?php echo $this->htmlElement('html'); ?>
+    <head>
+        <?php echo $this->headMeta(); ?>
+        <?php echo $this->headTitle(); ?>
+        <?php echo $this->headLink(); ?>
+        <?php echo $this->headStyle(); ?>
+        <?php echo $this->headScript(); ?>
+    </head>
+
+    <?php echo $this->htmlElement('body'); ?>
+        <?php echo $userBar; ?>
+
+        <header>
+            <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+                <div class="container-xl">
+                    <div class="navbar-brand">
+                        <img src="<?= $this->assetUrl("images/logo-white.svg"); ?>" alt="Gent Gemapt">                
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <?= $site->publicNav()->menu()->renderPartialWithParams([], $navigationLeft, 'navigation/topnav.phtml'); ?>
+                        <?= $site->publicNav()->menu()->renderPartialWithParams(['navContainerClass' => 'navbar-nav ms-auto'], $navigationRight, 'navigation/topnav.phtml'); ?>                    
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <?php echo $this->content; ?>
+        </main>
+
+        <footer>
+            <div class="container-xl">
+            Ghent Centre for Digital Humanities
+            </div>
+        </footer>
+
+    </body>
+</html>

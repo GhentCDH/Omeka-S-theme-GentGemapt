@@ -1,0 +1,130 @@
+/*
+Relative paths here are incorrect, vite has problems with relative paths in url()
+*/
+
+@font-face {
+  font-family: BrightonBold;
+  src: url("../fonts/BrightonStd-Bold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('../fonts/Graphik-Medium-Web.woff2') format('woff2'),
+       url('../fonts/Graphik-Medium-Web.woff') format('woff');
+  font-weight:  500;
+  font-style:   normal;
+  font-stretch: normal;
+}
+
+@font-face {
+  font-family: 'Graphik';
+  src: url('../fonts/Graphik-Regular-Web.woff2') format('woff2'),
+       url('../fonts/Graphik-Regular-Web.woff') format('woff');
+  font-weight:  400;
+  font-style:   normal;
+  font-stretch: normal;
+}
+
+body {
+  p {
+    line-height: 1.6rem;
+  }
+}
+
+a {
+  cursor: pointer;
+}
+
+/* headings */
+
+h1,h2,h3,h4,h5,h6 {
+  margin-bottom: 1rem;
+  font-weight: 500
+}
+
+h1 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  color: $primary;
+  font-family: $font-family-serif;
+}
+
+h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: $primary;
+  font-family: $font-family-serif;
+}
+
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.75rem
+}
+
+h4 {
+  font-size: 1.125rem;
+  line-height: 1.75rem
+}
+
+@media (min-width: 820px) {
+  h1 {
+    font-size:3rem;
+    line-height: 1
+  }
+
+  h2 {
+    font-size: 1.875rem;
+    line-height: 2.25rem
+  }
+
+  //h3 {
+  //  font-size: 1.5rem;
+  //  line-height: 2rem
+  //}
+  //
+  //h4 {
+  //  font-size: 1.25rem;
+  //  line-height: 1.75rem
+  //}
+}
+
+/* lists */
+.block {
+
+  ol, ul, menu {
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+  }
+
+  ul > li, ul.list-arrow > li {
+    position: relative;
+    padding-left: 1.5rem;
+
+    &::before {
+      content: '>';
+      font-weight: 500;
+      position: absolute;
+      left: 0;
+      color: $secondary;
+    }
+  }
+
+  ol {
+    list-style-type: decimal;
+    margin-left: 1rem;
+  }
+
+  ol > li {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    position: relative;
+    padding-left: 1rem;
+
+    &::marker {
+      color: $secondary;
+    }
+  }
+
+}

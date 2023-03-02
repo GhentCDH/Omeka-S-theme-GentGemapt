@@ -1,0 +1,54 @@
+<?php
+/** @var  $this->container */
+// variables
+$navContainerClass = $navContainerClass ?? "navbar-nav";
+$navItemClass = $navItemClass ?? 'nav-item';
+$navLinkClass = $navLinkClass ?? 'nav-link';
+$navLinkActiveClass = $navLinkActiveClass ?? 'active';
+$navDropdownClass = $navDropdownClass ?? 'dropdown';
+
+?>
+<ul class="<?= $navContainerClass ?>">
+    <?php foreach ($this->container as $page) { ?>
+        <?php /* @var $page Laminas\Navigation\Page\Mvc */ ?>
+        <?php // when using partials we need to manually check for ACL conditions ?>
+        <?php if (!$page->isVisible() || !$this->navigation()->accept($page)) { continue; } ?>
+        <?php 
+        $hasChildren = $page->hasPages();
+        $isActive = $page->isActive(true);
+        ?>
+        <?php if (!$hasChildren) { ?>
+            <li class="<?= $navItemClass ?>">
+                <a class="<?= $navLinkClass ?> <?= ($isActive ? $navLinkActiveClass : '') ?>" href="<?php echo $page->getHref() ?>">
+                    <span><?php echo $this->translate($page->getLabel()) ?></span>
+                </a>
+            </li>
+        <?php } else { ?>
+            <li class="<?= $navDropdownClass ?>">
+                <a href="<?php echo $page->getHref() ?>">
+                    <span><?php echo $this->translate($page->getLabel()) ?></span>
+                </a>
+                <a href="<?php echo $page->getHref() ?>"
+                class="dropdown-toggle dropdown-toggle-split"
+                area-expanded="false"
+                area-haspopup="true"
+                role="button"
+                data-toggle="dropdown"
+                ><span></span>
+                    <i class="glyphicon glyphicon-menu-down"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <?php foreach ($page->getPages() as $child) { ?>
+                        <?php // when using partials we need to manually check for ACL conditions ?>
+                        <?php if(!$child->isVisible() || !$this->navigation()->accept($child)) { continue; } ?>
+                        <li class="<?= $navItemClass ?>">
+                            <a class="<?= $navLinkClass ?>" href="<?php echo $child->getHref() ?>">
+                                <span><?php echo $this->translate($child->getLabel()) ?></span>
+                            </a>
+                        </li>
+                    <?php } ?>
+                </ul>
+            </li>
+        <?php } ?>
+    <?php } ?>
+</ul>
