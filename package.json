@@ -3,6 +3,14 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "homepage": "https://github.com/GhentCDH/Omeka-S-theme-GentGemapt",
+  "bugs": {
+    "url": "https://github.com/GhentCDH/Omeka-S-theme-GentGemapt/issues"
+  },
+  "keywords": [
+    "omeka-s",
+    "theme"
+  ],
   "dependencies": {
     "@popperjs/core": "^2.11.6"
   },

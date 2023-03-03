@@ -1,4 +1,11 @@
 <?php
+use Omeka\Api\Representation\SiteRepresentation;
+
+/**
+ * @var $site SiteRepresentation
+ */
+
+
 $boolIsProduction = $_SERVER['APPLICATION_ENV'] !== 'development';
 
 $escape = $this->plugin('escapeHtml');
