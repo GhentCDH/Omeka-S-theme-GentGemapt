@@ -37,9 +37,9 @@ $attachments = $attachments ?? [];
     /** @var ItemRepresentation $item */
     $item = $attachment->item();
     if ($item):
-        $classCard = trim($classCard . ' ' . $item->value('oa:styleClass')?->value() ?? '');
+        $classThisCard = trim($classCard . ' ' . $item->value('oa:styleClass')?->value() ?? '');
         ?>
-        <div class="<?= $classCard ?>">
+        <div class="<?= $classThisCard ?>">
             <div class="card-image">
                 <?php
                 $media = $attachment->media() ?: $item->primaryMedia();
