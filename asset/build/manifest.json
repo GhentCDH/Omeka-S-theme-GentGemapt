@@ -19,6 +19,14 @@
     "file": "Graphik-Regular-Web.woff2",
     "src": "fonts/Graphik-Regular-Web.woff2"
   },
+  "images/icoon_kaart.svg": {
+    "file": "icoon_kaart.svg",
+    "src": "images/icoon_kaart.svg"
+  },
+  "images/icoon_verrijkt.svg": {
+    "file": "icoon_verrijkt.svg",
+    "src": "images/icoon_verrijkt.svg"
+  },
   "index.css": {
     "file": "index.css",
     "src": "index.css"
@@ -29,7 +37,9 @@
       "Graphik-Medium-Web.woff2",
       "Graphik-Medium-Web.woff",
       "Graphik-Regular-Web.woff2",
-      "Graphik-Regular-Web.woff"
+      "Graphik-Regular-Web.woff",
+      "icoon_verrijkt.svg",
+      "icoon_kaart.svg"
     ],
     "css": [
       "index.css"
