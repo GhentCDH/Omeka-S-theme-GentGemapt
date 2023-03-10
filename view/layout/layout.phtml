@@ -77,7 +77,9 @@ foreach($navigationPages as $item ) {
                     <div class="navbar-brand">
                         <div class="navbar-brand-border-left"></div>
                         <div class="navbar-brand-image">
-                            <img src="<?= $this->assetUrl("images/logo-white.svg"); ?>" alt="Gent Gemapt">
+                            <a href="<?= $site->url() ?>">
+                                <img src="<?= $this->assetUrl("images/logo-white.svg"); ?>" alt="Gent Gemapt">
+                            </a>
                         </div>
                         <div class="navbar-brand-border-right"></div>
                     </div>
