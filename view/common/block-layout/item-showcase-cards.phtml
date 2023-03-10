@@ -8,17 +8,23 @@ $showTitleOption = $this->showTitleOption;
 
 $classCards = $classCards ?? "cards card-group";
 $classCard = $classCard ?? "card";
+$classCardTitle = $classCardTitle ?? "card-title";
 $classBtn = $classBtn ?? "btn btn-secondary";
-$useResourceLink = $useResourceLink ?? false;
-?>
 
+$useResourceLink = $useResourceLink ?? false;
+$linkEntireCard = $linkEntireCard ?? false;
+
+$attachments = $attachments ?? [];
+?>
 
 <div class="<?= $classCards ?>">
 <?php foreach ($attachments as $attachment):
     /** @var ItemRepresentation $item */
     $item = $attachment->item();
-    $itemValues = $item->values();
     if ($item):
+        $itemValues = $item->values();
+//        print_r($itemValues);
+        $classCard = trim($classCard . ' ' . $item->value('oa:styleClass')?->value() ?? '');
         ?>
         <div class="<?= $classCard ?>">
             <div class="card-image">
@@ -35,7 +41,7 @@ $useResourceLink = $useResourceLink ?? false;
             </div>
             <div class="card-body">
                 <?php if ( $showTitleOption !== 'no_title'): ?>
-                <h5 class="card-title">
+                <h5 class="<?= $classCardTitle ?>">
                     <?= $showTitleOption == 'item_title' ? $item->displayTitle() : $media->displayTitle() ?>
                 </h5>
                 <?php endif; ?>
@@ -44,7 +50,7 @@ $useResourceLink = $useResourceLink ?? false;
                     <?= $description ?>
                 </div>
                 <?php endif; ?>
-                <?php if ( $link = $item->value('dcterms:references') ): ?>
+                <?php if ( ($link = $item->value('dcterms:references')) && !$linkEntireCard ) : ?>
                 <div class="card-button">
                     <a href="<?= $link->uri() ?>" class="<?= $classBtn ?>"><?= $link->value() ?></a>
                 </div>
