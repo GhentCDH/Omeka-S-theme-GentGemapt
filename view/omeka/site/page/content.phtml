@@ -8,22 +8,47 @@ use Omeka\Api\Representation\SitePageRepresentation;
  * @var SitePageBlockRepresentation $block
  */
 
+function _templateToCamel($input)
+{
+    return lcfirst(str_replace(' ', '', ucwords(str_replace('-', ' ', $input))));
+}
+
 $layouts = [];
 foreach ($page->blocks() as $block):
 
+    // prepare render of block (only once)
     if (!array_key_exists($block->layout(), $layouts)) {
-        // Prepare render only once per layout type.
         $layouts[$block->layout()] = null;
         $this->blockLayout()->prepareRender($block->layout());
     }
 
-//    print_r($block->dataValue('divclass', 'section--default'));
-//    print_r($block->data());
-    $sectionClass = "block block--{$block->layout()} ".($block->dataValue('divclass', '') ?: 'block--default');
+    $blockLayout = $block->layout();
+    $blockLayout = str_replace(['itemShowCase'], ['itemShowcase'], $blockLayout);
+    $blockLayoutClass = strtolower(preg_replace('/([A-Z]+)/', '-${1}', $blockLayout));
+
+    // default block classes
+    $blockClasses = [
+            "block",
+            "block--{$blockLayoutClass}"
+    ];
+    // add custom class
+    if ( $divclass = $block->dataValue('divclass', null) ) {
+        $blockClasses[] = $divclass;
+    }
+    // add class based on template name
+    if ( $template = $block->dataValue('template', null) ) {
+        $templateClass = str_replace(' ', '-', array_reverse(explode(DIRECTORY_SEPARATOR, $template))[0]);
+        $templateClass = ltrim(str_replace($blockLayoutClass, '', $templateClass),'- ');
+        $blockClasses[] = "block--{$blockLayoutClass}--{$templateClass}";
+    }
+
+    $blockClasses = implode(' ', $blockClasses);
+
+    // render
     ?>
-    <div class="<?= $sectionClass ?>">
+    <div class="<?= $blockClasses ?>">
         <div class="container">
-                <?= $this->blockLayout()->render($block); ?>
+            <?= $this->blockLayout()->render($block); ?>
         </div>
     </div>
 <?php endforeach; ?>
