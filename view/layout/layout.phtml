@@ -70,14 +70,18 @@ foreach($navigationPages as $item ) {
             <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
                 <div class="container-xl">
                     <div class="navbar-brand">
-                        <img src="<?= $this->assetUrl("images/logo-white.svg"); ?>" alt="Gent Gemapt">                
+                        <div class="navbar-brand-border-left"></div>
+                        <div class="navbar-brand-image">
+                            <img src="<?= $this->assetUrl("images/logo-white.svg"); ?>" alt="Gent Gemapt">
+                        </div>
+                        <div class="navbar-brand-border-right"></div>
                     </div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <?= $site->publicNav()->menu()->renderPartialWithParams([], $navigationLeft, 'navigation/topnav.phtml'); ?>
-                        <?= $site->publicNav()->menu()->renderPartialWithParams(['navContainerClass' => 'navbar-nav ms-auto'], $navigationRight, 'navigation/topnav.phtml'); ?>                    
+                        <?= $site->publicNav()->menu()->renderPartialWithParams(['navContainerClass' => 'navbar-nav navbar-nav--left'], $navigationLeft, 'navigation/topnav.phtml'); ?>
+                        <?= $site->publicNav()->menu()->renderPartialWithParams(['navContainerClass' => 'navbar-nav navbar-nav--right ms-auto'], $navigationRight, 'navigation/topnav.phtml'); ?>
                     </div>
                 </div>
             </nav>
@@ -89,7 +93,7 @@ foreach($navigationPages as $item ) {
 
         <footer>
             <div class="container-xl">
-            Ghent Centre for Digital Humanities
+                © Ghent Centre for Digital Humanities
             </div>
         </footer>
 
