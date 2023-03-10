@@ -1,22 +1,32 @@
 
 // colors
+$theme-color-blue: #CFE7EB;
+$theme-color-dark-gray: #909090;
+$theme-color-light-gray: #E6E6E6;
+$theme-color-red: #ED474A;
+$theme-color-purple: #610345;
+$theme-color-green: #5AD2A2;
+$theme-color-black: #323232;
 
+
+
+// colors
 $background-color: white;
-$font-color: #333333;
+$font-color: $theme-color-black;
 
-$primary: #610345;
-$secondary: #ed474a;
-$tertiary: #909090;
-$black: #323232;
+$body-color: $theme-color-black;
+
+$primary: $theme-color-purple;
+$secondary: $theme-color-red;
+$tertiary: $theme-color-dark-gray;
+$black: $theme-color-black;
+
 $white: #fff;
 
 $light: #e6e6e6;
-
 $dark: $primary;
 
 $light-gray: #aaa;
-
-$color-blue: #0080b6;
 
 // fonts
 
@@ -28,6 +38,8 @@ $font-family: $font-family-sans-serif;
 $font-size: 1rem;
 $font-size-smaller: 0.9rem;
 $font-size-small: 0.8rem;
+$font-size-bigger: 1.1rem;
+$font-size-big: 1.2rem;
 
 // headings
 
@@ -55,3 +67,4 @@ $custom-checkbox-indicator-icon-checked: none;
 $navbar-dark-color: $white;
 $navbar-dark-active-color: $secondary;
 $nav-link-font-weight: 500;
+$nav-link-font-size: $font-size-bigger;
