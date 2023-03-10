@@ -34,6 +34,7 @@ $this->trigger('view.layout');
 
 
 // split menu container in left and right container
+$navigationFirst = new Laminas\Navigation\Navigation();
 $navigationLeft = new Laminas\Navigation\Navigation();
 $navigationRight = new Laminas\Navigation\Navigation();
 $navigationPages = $site->publicNav()->menu()->getContainer()->getPages();
@@ -44,7 +45,11 @@ $i = 0;
 foreach($navigationPages as $item ) {
     $i++;
     $item->setClass('nav-link');
-    if ( $i > floor($countPages/2) ) {
+    if ( $i == 1 ) {
+        $navigationFirst->addPage($item);
+        continue;
+    }
+    if ( $i > ceil($countPages/2) ) {
         $navigationRight->addPage($item);
     } else {
         $navigationLeft->addPage($item);
@@ -80,8 +85,13 @@ foreach($navigationPages as $item ) {
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <?= $site->publicNav()->menu()->renderPartialWithParams(['navContainerClass' => 'navbar-nav navbar-nav--left'], $navigationLeft, 'navigation/topnav.phtml'); ?>
-                        <?= $site->publicNav()->menu()->renderPartialWithParams(['navContainerClass' => 'navbar-nav navbar-nav--right ms-auto'], $navigationRight, 'navigation/topnav.phtml'); ?>
+                        <div class="navbar-container-left">
+                            <?= $site->publicNav()->menu()->renderPartialWithParams(['navContainerClass' => 'navbar-nav navbar-nav--first'], $navigationFirst, 'navigation/topnav.phtml'); ?>
+                            <?= $site->publicNav()->menu()->renderPartialWithParams(['navContainerClass' => 'navbar-nav navbar-nav--left'], $navigationLeft, 'navigation/topnav.phtml'); ?>
+                        </div>
+                        <div class="navbar-container-right">
+                            <?= $site->publicNav()->menu()->renderPartialWithParams(['navContainerClass' => 'navbar-nav navbar-nav--right ms-auto'], $navigationRight, 'navigation/topnav.phtml'); ?>
+                        </div>
                     </div>
                 </div>
             </nav>
