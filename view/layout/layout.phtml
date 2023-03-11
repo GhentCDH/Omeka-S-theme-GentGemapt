@@ -1,11 +1,7 @@
 <?php
-use Omeka\Api\Representation\SiteRepresentation;
-
 /**
- * @var $site SiteRepresentation
+ * @var $site Omeka\Api\Representation\SiteRepresentation
  */
-
-
 $boolIsProduction = $_SERVER['APPLICATION_ENV'] !== 'development';
 
 $escape = $this->plugin('escapeHtml');
@@ -24,12 +20,13 @@ $this->headScript()->prependFile($this->assetUrl('js/global.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
 
 if ( $boolIsProduction ) {
-    $this->headScript()->appendFile($this->assetUrl('build/index.js'), 'text/javascript', ['defer' => true]);
+    $this->headScript()->prependFile($this->assetUrl('build/index.js'), 'text/javascript'); //, ['defer' => true]);
 } else {
     $this->headScript()->prependFile('http://localhost:5173/@vite/client', 'text/javascript', ['type' => 'module']);
     $this->headScript()->prependFile('http://localhost:5173/js/main.js', 'text/javascript', ['type' => 'module']);   
 }
 $this->headScript()->setAllowArbitraryAttributes(true);
+$this->jsTranslate();
 $this->trigger('view.layout');
 
 
