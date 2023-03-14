@@ -96,4 +96,20 @@
         display: none;
     }
 
+    .card--gent-verrijkt:before {
+        content: '';
+        display: inline-block;
+        width: 100%;
+        height: 90px;
+        background: no-repeat center url('../images/icoon_verrijkt.svg')
+    }
+
+    .card--de-kaart:before {
+        content: '';
+        display: inline-block;
+        width: 100%;
+        height: 90px;
+        background: no-repeat center url('../images/icoon_kaart.svg')
+    }
+
 }
