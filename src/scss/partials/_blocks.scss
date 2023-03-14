@@ -12,6 +12,7 @@
         &:first-child {
             margin-top: 80px;
         }
+
     }
 
     // carousel
@@ -23,11 +24,15 @@
             max-width: 100%;
             padding: 0;
         }
+
+        .slick-dots {
+            display: none;
+        }
     }
 
     // item showcases
     .block--item-showcase--cards-startpage {
-        margin-top: -4rem;
+        margin-top: -5rem;
 
         .card {
             padding: 1rem 2rem;
@@ -50,6 +55,6 @@
     .block--html--section-light {
         padding: 3rem;
         margin: 0;
-        background-color: $theme-color-blue;
+        background-color: rgba($theme-color-blue, 0.4);
     }
 }
