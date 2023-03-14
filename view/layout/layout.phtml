@@ -11,6 +11,12 @@ $this->htmlElement('html')->setAttribute('lang', $this->lang());
 $this->headMeta()->setCharset('utf-8');
 $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1');
 $this->headTitle($this->setting('installation_title', 'Omeka S'))->setSeparator(' · ');
+
+// favicon
+$this->headLink(['rel' => 'icon', 'href' => $this->assetUrl('favicon/icon.ico'), 'sizes' => 'any']);
+$this->headLink(['rel' => 'icon', 'href' => $this->assetUrl('favicon/icon.svg'), 'type' => 'image/svg+xml']);
+$this->headLink(['apple-touch-icon' => 'icon', 'href' => $this->assetUrl('favicon/icon.ico'), 'sizes' => 'any']);
+
 // css
 if ( $boolIsProduction ) {
     $this->headLink()->appendStylesheet($this->assetUrl('build/index.css'));
