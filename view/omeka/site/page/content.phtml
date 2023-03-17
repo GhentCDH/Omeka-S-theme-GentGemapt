@@ -23,12 +23,12 @@ foreach ($page->blocks() as $block):
     }
 
     $blockLayout = $block->layout();
-    $blockLayout = str_replace(['itemShowCase'], ['itemShowcase'], $blockLayout);
+    $blockLayout = str_replace(['itemShowCase'], ['itemShowcase'], $blockLayout); // fix
     $blockLayoutClass = strtolower(preg_replace('/([A-Z]+)/', '-${1}', $blockLayout));
 
     // default block classes
     $blockClasses = [
-            "block",
+            "block-wrapper",
             "block--{$blockLayoutClass}"
     ];
     // add custom class
@@ -37,18 +37,24 @@ foreach ($page->blocks() as $block):
     }
     // add class based on template name
     if ( $template = $block->dataValue('template', null) ) {
-        $templateClass = str_replace(' ', '-', array_reverse(explode(DIRECTORY_SEPARATOR, $template))[0]);
-        $templateClass = ltrim(str_replace($blockLayoutClass, '', $templateClass),'- ');
+        $template = array_reverse(explode(DIRECTORY_SEPARATOR, $template))[0];
+        $templateClass = str_replace(' ', '-', $template);
+        $templateClass = ltrim(str_replace($blockLayoutClass, '', $templateClass),'- '); // todo: this is incorrect, default template can differ from block layout name
         $blockClasses[] = "block--{$blockLayoutClass}--{$templateClass}";
+    } else {
+        $template = 'default';
     }
 
     $blockClasses = implode(' ', $blockClasses);
 
+    $containerClasses = ['block-container'];
+    $containerClasses = implode(' ', $containerClasses);
+
     // render
     ?>
-    <div class="<?= $blockClasses ?>">
-        <div class="container">
+    <section class="<?= $blockClasses ?>" data-block-template="<?= $template ?>" data-block-id="<?= $block->id() ?>">
+        <div class="<?= $containerClasses ?>">
             <?= $this->blockLayout()->render($block); ?>
         </div>
-    </div>
+    </section>
 <?php endforeach; ?>

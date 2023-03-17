@@ -72,11 +72,10 @@ foreach($navigationPages as $item ) {
     </head>
 
     <?php echo $this->htmlElement('body'); ?>
-        <?php echo $userBar; ?>
-
-        <header>
-            <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
-                <div class="container-xl">
+        <div class="container-xl">
+            <header>
+                <?= $userBar ?>
+                <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
                     <div class="navbar-brand">
                         <div class="navbar-brand-border-left"></div>
                         <div class="navbar-brand-image">
@@ -98,19 +97,16 @@ foreach($navigationPages as $item ) {
                             <?= $site->publicNav()->menu()->renderPartialWithParams(['navContainerClass' => 'navbar-nav navbar-nav--right ms-auto'], $navigationRight, 'navigation/topnav.phtml'); ?>
                         </div>
                     </div>
-                </div>
-            </nav>
-        </header>
+                </nav>
+            </header>
 
-        <main>
-            <?php echo $this->content; ?>
-        </main>
+            <main>
+                <?php echo $this->content; ?>
+            </main>
 
-        <footer>
-            <div class="container-xl">
+            <footer>
                 © Ghent Centre for Digital Humanities
-            </div>
-        </footer>
-
+            </footer>
+        </div>
     </body>
 </html>
