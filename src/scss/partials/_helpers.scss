@@ -21,3 +21,31 @@ $sizes: ("25": 25%, "50": 50%, "75": 75%, "100": 100%);
 .mbottom-large {
   margin-bottom: 45px;
 }
+
+
+.bg-pink {
+  background-color: $theme-color-pink;
+}
+
+.bg-blue {
+  background-color: rgba($theme-color-blue, 0.4);
+}
+
+.px-default {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.py-default {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+.p-default {
+  padding: 2rem;
+}
+
+.px-relative {
+  padding-left: 6%;
+  padding-right: 6%;
+}

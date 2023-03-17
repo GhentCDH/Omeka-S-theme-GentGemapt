@@ -1,60 +1,153 @@
+$block-container-margin: 0;
+$block-container-margin-md: 0 calc(100%/12);
+
+$block-wrapper-margin: 1.5rem 0;
+$block-wrapper-margin-md: 3rem 0;
+
 .blocks {
 
     // block defaults
-    .block {
-        margin: 1.5rem 0;
+    .block-wrapper {
+        margin: $block-wrapper-margin;
         padding: 0;
 
         @include media-breakpoint-up(md) {
-            margin: 3rem 0;
+            margin: $block-wrapper-margin-md;
         }
 
         &:first-child {
             margin-top: 80px;
         }
 
-    }
-
-    // carousel
-    .block--carousel {
-        margin: 0;
-
-        .container {
-            width: 100%;
-            max-width: 100%;
-            padding: 0;
+        &.wide {
+            .block-container {
+                margin: $block-container-margin;
+            }
         }
 
-        .slick-dots {
-            display: none;
+        // highlight
+        &.block--highlight {
+            padding: 3rem 0;
+            margin: 0;
+            background-color: rgba($theme-color-blue, 0.4);
         }
-    }
 
-    // item showcases
-    .block--item-showcase--cards-startpage {
-        margin-top: -5rem;
+        &.block--highlight--inner {
+            .block-container {
+                padding: 3rem 4rem;
+                background-color: rgba($theme-color-blue, 0.4);
+            }
 
-        .card {
-            padding: 1rem 2rem;
+        }
 
-            .card-body {
-                font-size: $font-size-smaller;
+        // carousel
+        &.block--carousel {
+            margin: 0;
 
-                .card-text p {
-                    line-height: 1.4;
+            .container {
+                padding: 0;
+            }
 
-                    big {
-                        font-weight: 500;
+            .slick-dots {
+                display: none;
+            }
+        }
+
+        // item showcases
+        &.block--item-showcase--cards-startpage {
+            margin-top: -6rem;
+        }
+
+        // html
+        &.block--html--section-light {
+            @extend .block--highlight;
+        }
+
+        // resource-text
+        &.block--resource-text {
+
+            .file {
+                margin: 0;
+                border: 0;
+            }
+
+            .item.resource:first-of-type {
+                padding: 0;
+            }
+
+            .file.right {
+                order: 1;
+            }
+
+            .resource img {
+                width: 100%;
+            }
+
+            .row {
+                --bs-gutter-x: 40px;
+            }
+
+            &.block--resource-text--highlight {
+
+                .block-container {
+                    margin: $block-container-margin;
+                }
+
+                // highlight text
+                .text {
+                    padding: 6%;
+                    background-color: rgba(207, 231, 235, 0.4);
+                }
+
+                // make image fullscreen
+                .text {
+                    // flex: 1;
+                }
+
+                // cover image
+                @include media-breakpoint-up(lg) {
+                    .row {
+                        --bs-gutter-x: 0;
+                    }
+
+                    .media {
+                        overflow: hidden;
+                        // flex: 1;
+                        position: relative;
+
+                        .attachments {
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 100%;
+
+                            .item {
+                                width: 100%;
+                                height: 100%;
+
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                    object-fit: cover;
+                                }
+                            }
+                        }
                     }
                 }
             }
+
+        }
+
+
+    }
+
+    .block-container {
+        margin: $block-container-margin;
+
+        @include media-breakpoint-up(md) {
+            margin: $block-container-margin-md;
         }
     }
 
-    // section-light
-    .block--html--section-light {
-        padding: 3rem;
-        margin: 0;
-        background-color: rgba($theme-color-blue, 0.4);
-    }
 }

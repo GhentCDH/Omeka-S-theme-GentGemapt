@@ -1,3 +1,7 @@
+body > .container-xl {
+  padding: 0;
+}
+
 footer {
   padding: 1rem;
   background-color: $theme-color-blue;
@@ -6,3 +10,4 @@ footer {
   font-size: $font-size-smaller;
   margin-top: 4rem;
 }
+

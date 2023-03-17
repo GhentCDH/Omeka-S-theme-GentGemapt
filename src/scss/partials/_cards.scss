@@ -63,13 +63,14 @@
     }
 }
 
-.cards-start-page {
+.cards--startpage {
     gap: 0;
     flex-wrap: nowrap;
     justify-content: center;
 
     .card {
-        max-width: 400px;
+        width: 100%;
+        padding: 2rem 2rem;
         background-color: white;
 
         &:first-child {
@@ -81,10 +82,29 @@
             border-top-right-radius: 10px;
             border-bottom-right-radius: 10px;
         }
+
+        .card-body {
+            font-size: $font-size-smaller;
+
+            .card-text p {
+                line-height: 1.4;
+
+                big {
+                    font-weight: 500;
+                }
+            }
+        }
+
+        &:before {
+            content: '';
+            display: inline-block;
+            width: 100%;
+            height: 80px;
+        }
     }
 
     .card-title {
-        @extend h2;
+        @extend h1;
         text-align: center;
     }
 
@@ -96,19 +116,13 @@
         display: none;
     }
 
+
+
     .card--gent-verrijkt:before {
-        content: '';
-        display: inline-block;
-        width: 100%;
-        height: 90px;
         background: no-repeat center url('../images/icoon_verrijkt.svg')
     }
 
     .card--de-kaart:before {
-        content: '';
-        display: inline-block;
-        width: 100%;
-        height: 90px;
         background: no-repeat center url('../images/icoon_kaart.svg')
     }
 
