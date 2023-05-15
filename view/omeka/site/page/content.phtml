@@ -28,8 +28,8 @@ foreach ($page->blocks() as $block):
 
     // default block classes
     $blockClasses = [
-            "block-wrapper",
-            "block--{$blockLayoutClass}"
+            "section",
+            "block-type-{$blockLayoutClass}"
     ];
     // add custom class
     if ( $divclass = $block->dataValue('divclass', null) ) {
@@ -39,21 +39,21 @@ foreach ($page->blocks() as $block):
     if ( $template = $block->dataValue('template', null) ) {
         $template = array_reverse(explode(DIRECTORY_SEPARATOR, $template))[0];
         $templateClass = str_replace(' ', '-', $template);
-        $templateClass = ltrim(str_replace($blockLayoutClass, '', $templateClass),'- '); // todo: this is incorrect, default template can differ from block layout name
-        $blockClasses[] = "block--{$blockLayoutClass}--{$templateClass}";
+//        $templateClass = ltrim(str_replace($blockLayoutClass, '', $templateClass),'- '); // todo: this is incorrect, default template can differ from block layout name
+        $blockClasses[] = "block-template-{$templateClass}";
     } else {
-        $template = 'default';
+        $template = 'block-template-default';
     }
 
     $blockClasses = implode(' ', $blockClasses);
 
-    $containerClasses = ['block-container'];
+    $containerClasses = ['container'];
     $containerClasses = implode(' ', $containerClasses);
 
     // render
     ?>
-    <section class="<?= $blockClasses ?>" data-block-template="<?= $template ?>" data-block-id="<?= $block->id() ?>">
-        <div class="<?= $containerClasses ?>">
+    <section class="<?= $blockClasses ?>">
+        <div class="<?= $containerClasses ?>" data-block-template="<?= $template ?>" data-block-id="<?= $block->id() ?>">
             <?= $this->blockLayout()->render($block); ?>
         </div>
     </section>

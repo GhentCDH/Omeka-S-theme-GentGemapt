@@ -35,7 +35,6 @@ $this->headScript()->setAllowArbitraryAttributes(true);
 $this->jsTranslate();
 $this->trigger('view.layout');
 
-
 // split menu container in left and right container
 $navigationFirst = new Laminas\Navigation\Navigation();
 $navigationLeft = new Laminas\Navigation\Navigation();
@@ -59,8 +58,6 @@ foreach($navigationPages as $item ) {
     }
 }
 ?>
-
-
 <?php echo $this->doctype(); ?>
 <?php echo $this->htmlElement('html'); ?>
     <head>
@@ -105,7 +102,53 @@ foreach($navigationPages as $item ) {
             </main>
 
             <footer>
-                © Ghent Centre for Digital Humanities
+                <?php if ($footerContent = $this->themeSetting('footer')): ?>
+                    <?= str_replace('{assetPrefix}', $this->assetUrl('',null, false, false), $footerContent); ?>
+                <?php endif; ?>
+                <div class="sections">
+                    <div class="section">
+                        <div class="container">
+                            <div class="footer__logos">
+                                <div>
+                                    <a href="" target="_blank">
+                                        <img src="<?= $this->assetUrl("images/logo/logo_vlaanderen.svg"); ?>" alt="Logo Vlaanderen - Verbeelding werkt">
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="https://ugent.be" target="_blank">
+                                        <img src="<?= $this->assetUrl("images/logo/logo_ugent_nl_kleur.svg"); ?>" alt="Logo Universiteit Gent">
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="" target="_blank">
+                                        <img src="<?= $this->assetUrl("images/logo/logo_clariah_vl.png"); ?>" alt="Logo Clariah-Vl">
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="https://gent.be" target="_blank">
+                                        <img src="<?= $this->assetUrl("images/logo/logo_stad_gent.svg"); ?>" alt="Logo Stad Gent">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <div class="container">
+                            <div class="footer__text">
+                                Gent Gemapt is een platform van de Boekentoren, Archief Gent, Erfgoedcel Gent, Stam Gent, Huis van Alijn, Industriemuseum, Amsab - Instituut voor Sociale Geschiedenis, Liberas en het Ghent Centre for Digital Humanities van de UGent.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="section section--highlight section--compact">
+                        <div class="container">
+                            <div class="footer__text">
+                                © GentGemapt, 2023 - gebouwd door het Ghent Center for Digital Humanites.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </footer>
         </div>
     </body>
