@@ -1,13 +1,15 @@
 $block-container-margin: 0;
 $block-container-margin-md: 0 calc(100%/12);
 
+
+$block-wrapper-compact: 1rem 0;
 $block-wrapper-margin: 1.5rem 0;
 $block-wrapper-margin-md: 3rem 0;
 
-.blocks {
+.sections {
 
     // block defaults
-    .block-wrapper {
+    .section {
         margin: $block-wrapper-margin;
         padding: 0;
 
@@ -19,32 +21,44 @@ $block-wrapper-margin-md: 3rem 0;
             margin-top: 80px;
         }
 
-        &.wide {
-            .block-container {
+        &.section--wide {
+            .container {
                 margin: $block-container-margin;
+
+                @include media-breakpoint-up(md) {
+                    padding: 0;
+                }
             }
+        }
+
+        &.section--compact {
+            margin: $block-wrapper-compact;
         }
 
         // highlight
-        &.block--highlight {
+        &.section--highlight {
             padding: 3rem 0;
             margin: 0;
             background-color: rgba($theme-color-blue, 0.4);
+
+            &.section--compact {
+                padding: 1rem 0;
+            }
         }
 
-        &.block--highlight--inner {
-            .block-container {
+        &.section--highlight-container {
+            .container {
                 padding: 3rem 4rem;
                 background-color: rgba($theme-color-blue, 0.4);
             }
-
         }
 
         // carousel
-        &.block--carousel {
+        &.block-type-carousel {
             margin: 0;
 
             .container {
+                margin: 0;
                 padding: 0;
             }
 
@@ -54,17 +68,17 @@ $block-wrapper-margin-md: 3rem 0;
         }
 
         // item showcases
-        &.block--item-showcase--cards-startpage {
+        &.block-template-item-showcase-cards-startpage {
             margin-top: -6rem;
         }
 
         // html
-        &.block--html--section-light {
-            @extend .block--highlight;
+        &.block-template-html-section-light {
+            @extend .section--highlight;
         }
 
         // resource-text
-        &.block--resource-text {
+        &.block-type-resource-text {
 
             .file {
                 margin: 0;
@@ -87,9 +101,9 @@ $block-wrapper-margin-md: 3rem 0;
                 --bs-gutter-x: 40px;
             }
 
-            &.block--resource-text--highlight {
+            &.block-template-resource-text-highlight {
 
-                .block-container {
+                .container {
                     margin: $block-container-margin;
                 }
 
@@ -141,13 +155,4 @@ $block-wrapper-margin-md: 3rem 0;
 
 
     }
-
-    .block-container {
-        margin: $block-container-margin;
-
-        @include media-breakpoint-up(md) {
-            margin: $block-container-margin-md;
-        }
-    }
-
 }

@@ -3,11 +3,21 @@ body > .container-xl {
 }
 
 footer {
-  padding: 1rem;
-  background-color: $theme-color-blue;
+  border-top: 1px solid $theme-color-light-gray;
+  //background-color: $theme-color-blue;
   color: $theme-color-black;
-  text-align: center;
   font-size: $font-size-smaller;
   margin-top: 4rem;
 }
 
+$container-margin: 0;
+$container-margin-md: 0 calc(100%/12);
+
+.container {
+  width: auto;
+  max-width: unset;
+
+  @include media-breakpoint-up(md) {
+    margin: 0 calc(100%/12);
+  }
+}
