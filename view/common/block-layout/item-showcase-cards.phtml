@@ -18,6 +18,7 @@ $siteSetting = $plugins->get('siteSetting');
 $showTitleOption = $this->showTitleOption;
 
 $classCards = $classCards ?? "cards card-group";
+$classCardContainer = $classCardContainer ?? "col mb-4";
 $classCard = $classCard ?? "card";
 $classCardTitle = $classCardTitle ?? "card-title";
 $classBtn = $classBtn ?? "btn btn-secondary";
@@ -38,36 +39,38 @@ $attachments = $attachments ?? [];
     if ($item):
         $classThisCard = trim($classCard . ' ' . $item->value('oa:styleClass')?->value() ?? '');
         ?>
-        <div class="<?= $classThisCard ?>">
-                <div class="card-image">
-                    <?php
-                    $media = $attachment->media() ?: $item->primaryMedia();
-                    if ($media) {
-                        if ( $useResourceLink ) {
-                            echo $item->linkRaw($this->thumbnail($media, $this->thumbnailType));
-                        } else {
-                            echo $this->thumbnail($media, $this->thumbnailType);
+        <div class="<?= $classCardContainer ?>">
+            <div class="<?= $classThisCard ?>">
+                    <div class="card-image">
+                        <?php
+                        $media = $attachment->media() ?: $item->primaryMedia();
+                        if ($media) {
+                            if ( $useResourceLink ) {
+                                echo $item->linkRaw($this->thumbnail($media, $this->thumbnailType));
+                            } else {
+                                echo $this->thumbnail($media, $this->thumbnailType);
+                            }
                         }
-                    }
-                    ?>
-                </div>
-                <div class="card-body">
-                    <?php if ( $showTitleOption !== 'no_title'): ?>
-                        <h5 class="<?= $classCardTitle ?>">
-                            <?= $showTitleOption == 'item_title' ? $item->displayTitle() : $media->displayTitle() ?>
-                        </h5>
-                    <?php endif; ?>
-                    <?php if ( $description = $item->value('dcterms:description')?->value() ): ?>
-                        <div class="card-text">
-                            <?= $description ?>
-                        </div>
-                    <?php endif; ?>
-                    <?php if ( ($link = $item->value('dcterms:references')) ) : ?>
-                        <div class="card-button">
-                            <a href="<?= $link->uri() ?>" class="<?= $classBtn ?>"><?= $link->value() ?></a>
-                        </div>
-                    <?php endif; ?>
-                </div>
+                        ?>
+                    </div>
+                    <div class="card-body">
+                        <?php if ( $showTitleOption !== 'no_title'): ?>
+                            <h5 class="<?= $classCardTitle ?>">
+                                <?= $showTitleOption == 'item_title' ? $item->displayTitle() : $media->displayTitle() ?>
+                            </h5>
+                        <?php endif; ?>
+                        <?php if ( $description = $item->value('dcterms:description')?->value() ): ?>
+                            <div class="card-text">
+                                <?= $description ?>
+                            </div>
+                        <?php endif; ?>
+                        <?php if ( ($link = $item->value('dcterms:references')) ) : ?>
+                            <div class="card-button">
+                                <a href="<?= $link->uri() ?>" class="<?= $classBtn ?>"><?= $link->value() ?></a>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+            </div>
         </div>
     <?php endif; ?>
 <?php endforeach; ?>
