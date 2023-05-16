@@ -53,20 +53,6 @@ $block-wrapper-margin-md: 3rem 0;
             }
         }
 
-        // carousel
-        &.block-type-carousel {
-            margin: 0;
-
-            .container {
-                margin: 0;
-                padding: 0;
-            }
-
-            .slick-dots {
-                display: none;
-            }
-        }
-
         // item showcases
         &.block-template-item-showcase-cards-startpage {
             margin-top: -6rem;

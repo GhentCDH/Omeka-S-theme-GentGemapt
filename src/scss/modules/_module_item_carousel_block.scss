@@ -1,5 +1,16 @@
-.blocks .block--carousel:first-child {
-    margin-top: 0;
+.sections {
+    .block-type-carousel {
+        margin: 0 !important;
+
+        .container {
+            margin: 0;
+            padding: 0;
+        }
+
+        .slick-dots {
+            display: none;
+        }
+    }
 }
 
 .carousel-block {
@@ -18,7 +29,7 @@
         height: 250px;
        
         @include media-breakpoint-up(sm) {
-            height: 550px;
+            height: 450px;
         }        
     }
 
