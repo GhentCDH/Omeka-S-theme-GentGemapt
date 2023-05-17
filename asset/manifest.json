@@ -1,0 +1,35 @@
+{
+  "_bootstrap.esm.js": {
+    "file": "js/bootstrap.esm.js"
+  },
+  "js/ckeditor.css": {
+    "file": "css/ckeditor.css",
+    "src": "js/ckeditor.css"
+  },
+  "js/ckeditor.js": {
+    "css": [
+      "css/ckeditor.css"
+    ],
+    "file": "js/ckeditor.js",
+    "imports": [
+      "_bootstrap.esm.js"
+    ],
+    "isEntry": true,
+    "src": "js/ckeditor.js"
+  },
+  "js/main.css": {
+    "file": "css/main.css",
+    "src": "js/main.css"
+  },
+  "js/main.js": {
+    "css": [
+      "css/main.css"
+    ],
+    "file": "js/main.js",
+    "imports": [
+      "_bootstrap.esm.js"
+    ],
+    "isEntry": true,
+    "src": "js/main.js"
+  }
+}
