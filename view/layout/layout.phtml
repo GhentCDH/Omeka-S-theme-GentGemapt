@@ -19,14 +19,14 @@ $this->headLink(['apple-touch-icon' => 'icon', 'href' => $this->assetUrl('favico
 
 // css
 if ( $boolIsProduction ) {
-    $this->headLink()->appendStylesheet($this->assetUrl('build/index.css'));
+    $this->headLink()->appendStylesheet($this->assetUrl('css/main.css'));
 }
 // js
 $this->headScript()->prependFile($this->assetUrl('js/global.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
 
 if ( $boolIsProduction ) {
-    $this->headScript()->prependFile($this->assetUrl('build/index.js'), 'text/javascript'); //, ['defer' => true]);
+    $this->headScript()->prependFile($this->assetUrl('js/main.js'), 'text/javascript'); //, ['defer' => true]);
 } else {
     $this->headScript()->prependFile('http://localhost:5173/@vite/client', 'text/javascript', ['type' => 'module']);
     $this->headScript()->prependFile('http://localhost:5173/js/main.js', 'text/javascript', ['type' => 'module']);   
