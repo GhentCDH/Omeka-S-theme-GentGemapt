@@ -6,9 +6,10 @@
  * @var string $heading
  */
 
+$class = $class ?? "w-100 w-lg-75 ".$this->escapeHtmlAttr($divclass);
 ?>
 
-<div class="w-100 w-lg-75 <?= $this->escapeHtmlAttr($divclass) ?>">
+<div class="<?= $class ?>">
     <?php if (!empty($heading)): ?>
     <h2><?= $this->escapeHtml($heading) ?></h2>
     <?php endif; ?>
