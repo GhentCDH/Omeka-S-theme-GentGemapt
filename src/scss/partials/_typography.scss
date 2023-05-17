@@ -1,30 +1,3 @@
-/*
-Relative paths here are incorrect, vite has problems with relative paths in url()
-*/
-
-@font-face {
-  font-family: BrightonBold;
-  src: url("../fonts/BrightonStd-Bold.otf") format("opentype");
-}
-
-@font-face {
-  font-family: 'Graphik';
-  src: url('../fonts/Graphik-Medium-Web.woff2') format('woff2'),
-       url('../fonts/Graphik-Medium-Web.woff') format('woff');
-  font-weight:  500;
-  font-style:   normal;
-  font-stretch: normal;
-}
-
-@font-face {
-  font-family: 'Graphik';
-  src: url('../fonts/Graphik-Regular-Web.woff2') format('woff2'),
-       url('../fonts/Graphik-Regular-Web.woff') format('woff');
-  font-weight:  400;
-  font-style:   normal;
-  font-stretch: normal;
-}
-
 body {
   p {
     line-height: 1.6rem;
@@ -47,6 +20,7 @@ h1 {
   line-height: 2.25rem;
   color: $primary;
   font-family: $font-family-serif;
+  text-align: center;
 }
 
 h2 {
@@ -86,6 +60,14 @@ h4 {
   //  font-size: 1.25rem;
   //  line-height: 1.75rem
   //}
+}
+
+a.btn {
+  text-transform: uppercase;
+  font-size: $font-size-small;
+  font-weight: 500;
+  padding: 4px 18px;
+  margin-top: 12px;
 }
 
 /* lists */
