@@ -11,13 +11,29 @@ export default {
   },
   build: {
     manifest: true,
-    outDir: '../asset/build',
+    outDir: '../asset',
+    cssCodeSplit: true,
+    lib: {
+      entry: [path.resolve(__dirname, 'src/js/main.js'), path.resolve(__dirname, 'src/js/ckeditor.js')],
+      name: 'LibraryName',
+      fileName: '[name]',
+    },
     // disable output hashes
     rollupOptions: {
       output: {
-        entryFileNames: `[name].js`,
-        chunkFileNames: `[name].js`,
-        assetFileNames: `[name].[ext]`
+        entryFileNames: `js/[name].js`,
+        chunkFileNames: `js/[name].js`,
+        // assetFileNames: `[name].[ext]`
+        assetFileNames: (assetInfo) => {
+          var info = assetInfo.name.split(".");
+          var extType = info[info.length - 1];
+          if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(extType)) {
+            extType = "img";
+          } else if (/woff|woff2|otf/.test(extType)) {
+            extType = "css";
+          }
+          return `${extType}/[name][extname]`;
+        },
       }
     }
   },
