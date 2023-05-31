@@ -15,7 +15,7 @@ $this->headTitle($this->setting('installation_title', 'Omeka S'))->setSeparator(
 // favicon
 $this->headLink(['rel' => 'icon', 'href' => $this->assetUrl('favicon/icon.ico'), 'sizes' => 'any']);
 $this->headLink(['rel' => 'icon', 'href' => $this->assetUrl('favicon/icon.svg'), 'type' => 'image/svg+xml']);
-$this->headLink(['apple-touch-icon' => 'icon', 'href' => $this->assetUrl('favicon/icon.ico'), 'sizes' => 'any']);
+$this->headLink(['rel' => 'apple-touch-icon', 'href' => $this->assetUrl('favicon/apple-touch-icon.png'), 'sizes' => 'any']);
 
 // css
 if ( $boolIsProduction ) {
