@@ -48,7 +48,7 @@ CKEDITOR.stylesSet.add('theme_styles',
         { name: 'Superscript',		element: 'sup' },
         */
 
-        {name: 'Button', element: 'a', attributes: {'class': 'btn'}},
+        {name: 'Button', element: 'a', attributes: {'class': 'btn btn-secondary'}},
 
         {name: 'Marker', element: 'span', attributes: {'class': 'marker'}},
 
