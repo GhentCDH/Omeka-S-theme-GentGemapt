@@ -23,6 +23,10 @@ h1 {
   text-align: center;
 }
 
+body > .container-xl > main > h1 {
+  margin-top: 80px;
+}
+
 h2 {
   font-size: 1.5rem;
   line-height: 2rem;
