@@ -26,7 +26,7 @@ $this->headScript()->prependFile($this->assetUrl('js/global.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
 
 if ( $boolIsProduction ) {
-    $this->headScript()->prependFile($this->assetUrl('js/main.js'), 'text/javascript'); //, ['defer' => true]);
+    $this->headScript()->prependFile($this->assetUrl('js/main.js'), 'text/javascript', ['type' => 'module']); //, ['defer' => true]);
 } else {
     $this->headScript()->prependFile('http://localhost:5173/@vite/client', 'text/javascript', ['type' => 'module']);
     $this->headScript()->prependFile('http://localhost:5173/js/main.js', 'text/javascript', ['type' => 'module']);   
