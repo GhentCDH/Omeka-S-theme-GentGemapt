@@ -69,7 +69,7 @@ foreach($navigationPages as $item ) {
     </head>
 
     <?php echo $this->htmlElement('body'); ?>
-        <div class="container-xl">
+
             <header>
                 <?= $userBar ?>
                 <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
@@ -85,71 +85,83 @@ foreach($navigationPages as $item ) {
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <div class="navbar-container-left">
-                            <?= $site->publicNav()->menu()->renderPartialWithParams(['navContainerClass' => 'navbar-nav navbar-nav--first'], $navigationFirst, 'navigation/topnav.phtml'); ?>
-                            <?= $site->publicNav()->menu()->renderPartialWithParams(['navContainerClass' => 'navbar-nav navbar-nav--left'], $navigationLeft, 'navigation/topnav.phtml'); ?>
-                        </div>
-                        <div class="navbar-container-right">
-                            <?= $site->publicNav()->menu()->renderPartialWithParams(['navContainerClass' => 'navbar-nav navbar-nav--right ms-auto'], $navigationRight, 'navigation/topnav.phtml'); ?>
+                    <div class="container-xl">
+                        <div class="row w-100">
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <div class="navbar-container-left">
+                                    <?= $site->publicNav()->menu()->renderPartialWithParams(['navContainerClass' => 'navbar-nav navbar-nav--first'], $navigationFirst, 'navigation/topnav.phtml'); ?>
+                                    <?= $site->publicNav()->menu()->renderPartialWithParams(['navContainerClass' => 'navbar-nav navbar-nav--left'], $navigationLeft, 'navigation/topnav.phtml'); ?>
+                                </div>
+                                <div class="navbar-container-right">
+                                    <?= $site->publicNav()->menu()->renderPartialWithParams(['navContainerClass' => 'navbar-nav navbar-nav--right ms-auto'], $navigationRight, 'navigation/topnav.phtml'); ?>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </nav>
             </header>
 
-            <main>
-                <?php echo $this->content; ?>
+            <main class="container-xl">
+                <div class="row w-100">
+                    <?php echo $this->content; ?>
+                </div>
             </main>
 
-            <footer>
-                <?php if ($footerContent = $this->themeSetting('footer')): ?>
-                    <?= str_replace('{assetPrefix}', $this->assetUrl('',null, false, false), $footerContent); ?>
-                <?php endif; ?>
-                <div class="sections">
-                    <div class="section">
-                        <div class="container">
-                            <div class="footer__logos">
-                                <div>
-                                    <a href="" target="_blank">
-                                        <img src="<?= $this->assetUrl("images/logo/logo_vlaanderen.svg"); ?>" alt="Logo Vlaanderen - Verbeelding werkt">
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="https://ugent.be" target="_blank">
-                                        <img src="<?= $this->assetUrl("images/logo/logo_ugent_nl_kleur.svg"); ?>" alt="Logo Universiteit Gent">
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="" target="_blank">
-                                        <img src="<?= $this->assetUrl("images/logo/logo_clariah_vl.png"); ?>" alt="Logo Clariah-Vl">
-                                    </a>
-                                </div>
-                                <div>
-                                    <a href="https://gent.be" target="_blank">
-                                        <img src="<?= $this->assetUrl("images/logo/logo_stad_gent.svg"); ?>" alt="Logo Stad Gent">
-                                    </a>
+            <footer class="container-xl">
+                <div class="row w-100">
+                        <?php if ($footerContent = $this->themeSetting('footer')): ?>
+                            <?= str_replace('{assetPrefix}', $this->assetUrl('',null, false, false), $footerContent); ?>
+                        <?php endif; ?>
+                        <div class="sections">
+                            <div class="section">
+                                <div class="container">
+                                    <div class="footer__logos">
+                                        <div>
+                                            <a href="" target="_blank">
+                                                <img src="<?= $this->assetUrl("images/logo/logo_vlaanderen.svg"); ?>" alt="Logo Vlaanderen - Verbeelding werkt">
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="https://ugent.be" target="_blank">
+                                                <img src="<?= $this->assetUrl("images/logo/logo_ugent_nl_kleur.svg"); ?>" alt="Logo Universiteit Gent">
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="" target="_blank">
+                                                <img src="<?= $this->assetUrl("images/logo/logo_clariah_vl.png"); ?>" alt="Logo Clariah-Vl">
+                                            </a>
+                                        </div>
+                                        <div>
+                                            <a href="https://gent.be" target="_blank">
+                                                <img src="<?= $this->assetUrl("images/logo/logo_stad_gent.svg"); ?>" alt="Logo Stad Gent">
+                                            </a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="section">
-                        <div class="container">
-                            <div class="footer__text">
-                                Gent Gemapt is een platform van de Boekentoren, Archief Gent, Erfgoedcel Gent, Stam Gent, Huis van Alijn, Industriemuseum, Amsab - Instituut voor Sociale Geschiedenis, Liberas en het Ghent Center for Digital Humanities van de UGent.
+                            <div class="section">
+                                <div class="container">
+                                    <div class="footer__text">
+                                        Gent Gemapt is een platform van de Boekentoren, Archief Gent, Erfgoedcel Gent, Stam Gent, Huis van Alijn, Industriemuseum, Amsab - Instituut voor Sociale Geschiedenis, Liberas en het Ghent Center for Digital Humanities van de UGent.
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
 
-                    <div class="section section--highlight section--compact">
-                        <div class="container">
-                            <div class="footer__text">
-                                © GentGemapt, 2023 - gebouwd door het Ghent Center for Digital Humanities.
+                        </div>
+                    </div>
+            </footer>
+            <footer class="container-fluid bg-blue">
+                <div class="container-xl">
+                    <div class="row w-100 sections">
+                        <div class="section section--compact">
+                            <div class="w-100">
+                                <div class="footer__text">
+                                    © GentGemapt, 2023 - gebouwd door het Ghent Center for Digital Humanities.
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </footer>
-        </div>
     </body>
 </html>
