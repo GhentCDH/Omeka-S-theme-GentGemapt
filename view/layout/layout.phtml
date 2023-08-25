@@ -3,7 +3,6 @@
  * @var $site Omeka\Api\Representation\SiteRepresentation
  */
 $boolIsProduction = ($_SERVER['APPLICATION_ENV'] ?? 'production') !== 'development';
-$boolIsProduction = true;
 
 $escape = $this->plugin('escapeHtml');
 $userBar = $this->userBar();
